@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Add a New Company {% endblock %}</h1>
+
+    <form method="POST" action="/">
+        {{ form.csrf_token }}
+
+        <p>
+            {{ form.title.label }}
+            {{ form.title(size=20) }}
+        </p>
+
+        {% if form.title.errors %}
+            <ul class="errors">
+                {% for error in form.title.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    <p>
+            {{ form.electricity.label }}
+            {{ form.electricity() }}
+        </p>
+
+        {% if form.electricity.errors %}
+            <ul class="errors">
+                {% for error in form.electricity.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+    <p>
+            {{ form.natural_gas.label }}
+            {{ form.natural_gas() }}
+        </p>
+
+        {% if form.natural_gas.errors %}
+            <ul class="errors">
+                {% for error in form.natural_gas.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+    <p>
+            {{ form.fuel.label }}
+            {{ form.fuel() }}
+        </p>
+
+        {% if form.fuel.errors %}
+            <ul class="errors">
+                {% for error in form.fuel.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+    <p>
+            {{ form.waste.label }}
+            {{ form.waste() }}
+        </p>
+
+        {% if form.waste.errors %}
+            <ul class="errors">
+                {% for error in form.waste.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+    <p>
+            {{ form.recycled_percent.label }}
+            {{ form.recycled_percent() }}
+        </p>
+
+        {% if form.recycled_percent.errors %}
+            <ul class="errors">
+                {% for error in form.recycled_percent.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+    <p>
+            {{ form.business_travels.label }}
+            {{ form.business_travels() }}
+        </p>
+
+        {% if form.business_travels.errors %}
+            <ul class="errors">
+                {% for error in form.business_travels.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+    <p>
+            {{ form.fuel_efficiency.label }}
+            {{ form.fuel_efficiency() }}
+        </p>
+
+        {% if form.fuel_efficiency.errors %}
+            <ul class="errors">
+                {% for error in form.fuel_efficiency.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        <p>
+            <input type="submit" value="Submit">
+        </p>
+    </form>
+
+{% endblock %}
