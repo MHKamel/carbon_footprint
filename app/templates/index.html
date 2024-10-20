@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Form</title>
+</head>
+<body>
+    <h1>Company Form</h1>
+    <form method="POST" action="/">
+        {{ form.hidden_tag() }}
+        {{ form.title.label }} {{ form.title() }}<br>
+        {{ form.electricity.label }} {{ form.electricity() }}<br>
+        {{ form.natural_gas.label }} {{ form.natural_gas() }}<br>
+        {{ form.fuel.label }} {{ form.fuel() }}<br>
+        {{ form.waste.label }} {{ form.waste() }}<br>
+        {{ form.recycled_percent.label }} {{ form.recycled_percent() }}<br>
+        {{ form.business_travels.label }} {{ form.business_travels() }}<br>
+        {{ form.fuel_efficiency.label }} {{ form.fuel_efficiency() }}<br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

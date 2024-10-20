@@ -1,0 +1,19 @@
+<!-- app/templates/companies.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Companies</title>
+</head>
+<body>
+    <h1>Companies List</h1>
+    <ul>
+        {% for company in companies_list %}
+        <li>{{ company.title }}: Electricity - {{ company.electricity }} | Natural Gas - {{ company.natural_gas }}</li>
+        {% else %}
+        <li>No companies available.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
