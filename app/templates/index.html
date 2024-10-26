@@ -1,81 +1,107 @@
-<!--
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Company Form</title>
-</head>
-<body>
-    <h1>Company Form</h1>
-    <form method="POST" action="/">
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h2 class="mt-4 mb-4 text-center">Company Form</h2>
+    <form method="POST" action="{{ url_for('main.index') }}" class="p-3" style="max-width: 600px; margin: auto; background-color: #f9f9f9; border-radius: 8px;">
         {{ form.hidden_tag() }}
-        {{ form.title.label }} {{ form.title() }}<br>
-        {{ form.electricity.label }} {{ form.electricity() }}<br>
-        {{ form.natural_gas.label }} {{ form.natural_gas() }}<br>
-        {{ form.fuel.label }} {{ form.fuel() }}<br>
-        {{ form.waste.label }} {{ form.waste() }}<br>
-        {{ form.recycled_percent.label }} {{ form.recycled_percent() }}<br>
-        {{ form.business_travels.label }} {{ form.business_travels() }}<br>
-        {{ form.fuel_efficiency.label }} {{ form.fuel_efficiency() }}<br>
-        <input type="submit" value="Submit">
+
+        <!-- Form-wide validation errors -->
+        {% if form.errors %}
+            <div class="alert alert-danger">
+                <ul>
+                    {% for field, field_errors in form.errors.items() %}
+                        {% for error in field_errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+
+        <!-- Form Fields arranged in two columns -->
+        <div class="row">
+            <div class="col-md-6">
+                <!-- Title Field -->
+                <div class="form-group mb-2">
+                    {{ form.title.label(class="form-label small") }}
+                    {{ form.title(class="form-control form-control-sm") }}
+                    {% if form.title.errors %}
+                        <small class="text-danger">{{ form.title.errors[0] }}</small>
+                    {% endif %}
+                </div>
+
+                <!-- Electricity Field -->
+                <div class="form-group mb-2">
+                    {{ form.electricity.label(class="form-label small") }}
+                    {{ form.electricity(class="form-control form-control-sm") }}
+                    {% if form.electricity.errors %}
+                        <small class="text-danger">{{ form.electricity.errors[0] }}</small>
+                    {% endif %}
+                </div>
+
+                <!-- Natural Gas Field -->
+                <div class="form-group mb-2">
+                    {{ form.natural_gas.label(class="form-label small") }}
+                    {{ form.natural_gas(class="form-control form-control-sm") }}
+                    {% if form.natural_gas.errors %}
+                        <small class="text-danger">{{ form.natural_gas.errors[0] }}</small>
+                    {% endif %}
+                </div>
+
+                <!-- Fuel Field -->
+                <div class="form-group mb-2">
+                    {{ form.fuel.label(class="form-label small") }}
+                    {{ form.fuel(class="form-control form-control-sm") }}
+                    {% if form.fuel.errors %}
+                        <small class="text-danger">{{ form.fuel.errors[0] }}</small>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <!-- Waste Field -->
+                <div class="form-group mb-2">
+                    {{ form.waste.label(class="form-label small") }}
+                    {{ form.waste(class="form-control form-control-sm") }}
+                    {% if form.waste.errors %}
+                        <small class="text-danger">{{ form.waste.errors[0] }}</small>
+                    {% endif %}
+                </div>
+
+                <!-- Recycled Percent Field -->
+                <div class="form-group mb-2">
+                    {{ form.recycled_percent.label(class="form-label small") }}
+                    {{ form.recycled_percent(class="form-control form-control-sm") }}
+                    {% if form.recycled_percent.errors %}
+                        <small class="text-danger">{{ form.recycled_percent.errors[0] }}</small>
+                    {% endif %}
+                </div>
+
+                <!-- Business Travels Field -->
+                <div class="form-group mb-2">
+                    {{ form.business_travels.label(class="form-label small") }}
+                    {{ form.business_travels(class="form-control form-control-sm") }}
+                    {% if form.business_travels.errors %}
+                        <small class="text-danger">{{ form.business_travels.errors[0] }}</small>
+                    {% endif %}
+                </div>
+
+                <!-- Fuel Efficiency Field -->
+                <div class="form-group mb-2">
+                    {{ form.fuel_efficiency.label(class="form-label small") }}
+                    {{ form.fuel_efficiency(class="form-control form-control-sm") }}
+                    {% if form.fuel_efficiency.errors %}
+                        <small class="text-danger">{{ form.fuel_efficiency.errors[0] }}</small>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="text-center mt-3">
+            <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+        </div>
     </form>
-</body>
-</html>
--->
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Company Form</title>
-
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-    <div class="container">
-        <h1 class="mt-4 mb-4">Company Form</h1>
-        <form method="POST" action="{{ url_for('main.index') }}">
-            {{ form.hidden_tag() }}
-            <div class="form-group">
-                {{ form.title.label(class="form-label") }}
-                {{ form.title(class="form-control") }}
-            </div>
-            <div class="form-group">
-                {{ form.electricity.label(class="form-label") }}
-                {{ form.electricity(class="form-control") }}
-            </div>
-            <div class="form-group">
-                {{ form.natural_gas.label(class="form-label") }}
-                {{ form.natural_gas(class="form-control") }}
-            </div>
-            <div class="form-group">
-                {{ form.fuel.label(class="form-label") }}
-                {{ form.fuel(class="form-control") }}
-            </div>
-            <div class="form-group">
-                {{ form.waste.label(class="form-label") }}
-                {{ form.waste(class="form-control") }}
-            </div>
-            <div class="form-group">
-                {{ form.recycled_percent.label(class="form-label") }}
-                {{ form.recycled_percent(class="form-control") }}
-            </div>
-            <div class="form-group">
-                {{ form.business_travels.label(class="form-label") }}
-                {{ form.business_travels(class="form-control") }}
-            </div>
-            <div class="form-group">
-                {{ form.fuel_efficiency.label(class="form-label") }}
-                {{ form.fuel_efficiency(class="form-control") }}
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-    </div>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
-</html>
+</div>
+{% endblock %}

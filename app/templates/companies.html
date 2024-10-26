@@ -1,32 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Companies</title>
+{% extends "base.html" %}
 
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-    <div class="container">
-        <h1 class="mt-4 mb-4">Companies List</h1>
-        <ul class="list-group">
-            {% for company in companies_list %}
-            <li class="list-group-item">
-                <strong>{{ company.title }}</strong><br>
-                {# Dynamically iterate over the company's attributes #}
-                {% for column in company.__table__.columns %}
-                    {{ column.name }}: {{ company[column.name] }}{% if not loop.last %} | {% endif %}
-                {% endfor %}
-            </li>
-            {% else %}
-            <li class="list-group-item">No companies available.</li>
+{% block title %}Companies List{% endblock %}
+
+{% block content %}
+    <h1 class="mt-4 mb-4">Companies List</h1>
+    <ul class="list-group">
+        {% for company in companies_list %}
+        <li class="list-group-item">
+            <strong>{{ company.title }}</strong><br>
+            {% for key, value in company.__dict__.items() %}
+                {% if not key.startswith('_') %}
+                    {{ key.replace('_', ' ').capitalize() }}:
+                    {% if value is number and value is float %}
+                        {{ value | round(3) }}
+                    {% else %}
+                        {{ value }}
+                    {% endif %}
+                    |
+                {% endif %}
             {% endfor %}
-        </ul>
-    </div>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
-</html>
+        </li>
+        {% else %}
+        <li class="list-group-item">No companies available.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
