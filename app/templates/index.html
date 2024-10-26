@@ -1,3 +1,4 @@
+<!--
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,5 +20,62 @@
         {{ form.fuel_efficiency.label }} {{ form.fuel_efficiency() }}<br>
         <input type="submit" value="Submit">
     </form>
+</body>
+</html>
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Form</title>
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-4 mb-4">Company Form</h1>
+        <form method="POST" action="{{ url_for('main.index') }}">
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+                {{ form.title.label(class="form-label") }}
+                {{ form.title(class="form-control") }}
+            </div>
+            <div class="form-group">
+                {{ form.electricity.label(class="form-label") }}
+                {{ form.electricity(class="form-control") }}
+            </div>
+            <div class="form-group">
+                {{ form.natural_gas.label(class="form-label") }}
+                {{ form.natural_gas(class="form-control") }}
+            </div>
+            <div class="form-group">
+                {{ form.fuel.label(class="form-label") }}
+                {{ form.fuel(class="form-control") }}
+            </div>
+            <div class="form-group">
+                {{ form.waste.label(class="form-label") }}
+                {{ form.waste(class="form-control") }}
+            </div>
+            <div class="form-group">
+                {{ form.recycled_percent.label(class="form-label") }}
+                {{ form.recycled_percent(class="form-control") }}
+            </div>
+            <div class="form-group">
+                {{ form.business_travels.label(class="form-label") }}
+                {{ form.business_travels(class="form-control") }}
+            </div>
+            <div class="form-group">
+                {{ form.fuel_efficiency.label(class="form-label") }}
+                {{ form.fuel_efficiency(class="form-control") }}
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -1,9 +1,7 @@
-# app/routes.py
-
 from flask import Blueprint, render_template, redirect, url_for
 from .forms import CompanyForm
-from .models import Company
 from . import db
+from .models import Company
 
 main_bp = Blueprint('main', __name__)
 
@@ -24,12 +22,14 @@ def index():
             business_travels=form.business_travels.data,
             fuel_efficiency=form.fuel_efficiency.data
         )
+        # Calculate and update the company with the energy usage
+        new_company.calculate_carbon_footprints()
 
         # Add the new company to the database
         db.session.add(new_company)
         db.session.commit()
 
-        return redirect(url_for('main.index'))
+        return redirect(url_for('main.companies'))
 
     return render_template('index.html', form=form)
 
