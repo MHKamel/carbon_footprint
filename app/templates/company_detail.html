@@ -1,23 +1,61 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
 {% block title %}Company Details{% endblock %}
 
 {% block content %}
-<div class="container">
-    <h1>Company Details for {{ company.title }}</h1>
-    <ul class="list-group">
-        <li class="list-group-item"><strong>Electricity:</strong> {{ company.electricity }}</li>
-        <li class="list-group-item"><strong>Natural Gas:</strong> {{ company.natural_gas }}</li>
-        <li class="list-group-item"><strong>Fuel:</strong> {{ company.fuel }}</li>
-        <li class="list-group-item"><strong>Waste:</strong> {{ company.waste }}</li>
-        <li class="list-group-item"><strong>Recycled Percent:</strong> {{ company.recycled_percent }}</li>
-        <li class="list-group-item"><strong>Business Travels:</strong> {{ company.business_travels }}</li>
-        <li class="list-group-item"><strong>Fuel Efficiency:</strong> {{ company.fuel_efficiency }}</li>
-        <li class="list-group-item"><strong>Energy Usage:</strong> {{ "%.3f" | format(company.energy_usage) }}</li>
-        <li class="list-group-item"><strong>Waste Generation:</strong> {{ "%.3f" | format(company.waste_generation) }}</li>
-        <li class="list-group-item"><strong>Business Travel Emissions:</strong> {{ "%.3f" | format(company.business_travel) }}</li>
-        <li class="list-group-item"><strong>Total Carbon Footprint:</strong> {{ "%.3f" | format(company.total) }}</li>
-    </ul>
-    <a href="{{ url_for('main.companies') }}" class="btn btn-primary mt-3">Back to Companies List</a>
-</div>
+<h1 class="mt-4 mb-4">{{ company.title }} - Detailed Information</h1>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Title</th>
+        <td>{{ company.title }}</td>
+    </tr>
+    <tr>
+        <th>Electricity</th>
+        <td>{{ company.electricity }}</td>
+    </tr>
+    <tr>
+        <th>Natural Gas</th>
+        <td>{{ company.natural_gas }}</td>
+    </tr>
+    <tr>
+        <th>Fuel</th>
+        <td>{{ company.fuel }}</td>
+    </tr>
+    <tr>
+        <th>Waste</th>
+        <td>{{ company.waste }}</td>
+    </tr>
+    <tr>
+        <th>Recycled Percent</th>
+        <td>{{ company.recycled_percent }}</td>
+    </tr>
+    <tr>
+        <th>Business Travels</th>
+        <td>{{ company.business_travels }}</td>
+    </tr>
+    <tr>
+        <th>Fuel Efficiency</th>
+        <td>{{ company.fuel_efficiency }}</td>
+    </tr>
+    <tr>
+        <th>Energy Usage</th>
+        <td>{{ '{:.3f}'.format(company.energy_usage) }}</td>
+    </tr>
+    <tr>
+        <th>Waste Generation</th>
+        <td>{{ '{:.3f}'.format(company.waste_generation) }}</td>
+    </tr>
+    <tr>
+        <th>Business Travel</th>
+        <td>{{ '{:.3f}'.format(company.business_travel) }}</td>
+    </tr>
+    <tr>
+        <th>Total Carbon Footprint</th>
+        <td>{{ '{:.3f}'.format(company.total) }}</td>
+    </tr>
+</table>
+
+<a href="{{ url_for('main.companies') }}" class="btn btn-secondary mt-3">Back to Companies List</a>
+<button onclick="printPDF()" class="btn btn-primary mt-3">Print PDF Report</button>
 {% endblock %}
