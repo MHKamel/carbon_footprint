@@ -1,39 +1,49 @@
 {% extends 'base.html' %}
 
-{% block title %}summary of carbon footprints{% endblock %}
+{% block title %}Summary of Carbon Footprints{% endblock %}
 
 {% block content %}
-<h1 class="mt-4 mb-4">summary of carbon footprints</h1>
-<button onclick="printPDF()" class="btn btn-primary mb-3">Print PDF Report</button>
-<table id="myTable" class="table table-striped table-bordered">
-    <thead>
-    <tr>
-        <th>Title</th>
-        <th>Energy Usage</th>
-        <th>Waste Generation</th>
-        <th>Business Travel</th>
-        <th>Total Carbon Footprint</th>
-        <th>Actions</th>
-    </tr>
-    </thead>
-    <tbody>
-    {% for company in companies_list %}
-    <tr>
-        <td>{{ company.title }}</td>
-        <td>{{ '{:.3f}'.format(company.energy_usage) }}</td>
-        <td>{{ '{:.3f}'.format(company.waste_generation) }}</td>
-        <td>{{ '{:.3f}'.format(company.business_travel) }}</td>
-        <td>{{ '{:.3f}'.format(company.total) }}</td>
-        <td>
-            <a href="{{ url_for('main.companies', company_id=company.id) }}" class="btn btn-info btn-sm">View
-                Details</a>
-        </td>
-    </tr>
-    {% else %}
-    <tr>
-        <td colspan="12">No companies available.</td>
-    </tr>
-    {% endfor %}
-    </tbody>
-</table>
+    <h1 class="mt-4 mb-4">Companies List</h1>
+
+    <button onclick="printPDF()" class="btn btn-primary mb-3">Print PDF Report</button>
+
+    <table id="myTable" class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Energy Usage</th>
+                <th>Waste Generation</th>
+                <th>Business Travel</th>
+                <th>Total Carbon Footprint</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for company in companies_list %}
+            <tr>
+                <td>{{ company.id }}</td>
+                <td>{{ company.title }}</td>
+                <td>{{ '{:.3f}'.format(company.energy_usage) }}</td>
+                <td>{{ '{:.3f}'.format(company.waste_generation) }}</td>
+                <td>{{ '{:.3f}'.format(company.business_travel) }}</td>
+                <td>{{ '{:.3f}'.format(company.total) }}</td>
+                <td>
+                    <a href="{{ url_for('main.companies', company_id=company.id) }}" class="btn btn-info btn-sm">View Details</a>
+                    <a href="{{ url_for('main.delete_company', company_id=company.id) }}" class="btn btn-danger btn-sm"
+                       onclick="return confirm('Are you sure you want to delete this company? This action cannot be undone.');">Delete</a>
+                </td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="7">No companies available.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
+
+{% block scripts %}
+
 {% endblock %}

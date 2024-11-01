@@ -45,3 +45,10 @@ def companies(company_id):
         # Display a list of all companies
         companies_list = Company.query.all()
         return render_template("companies.html", companies_list=companies_list)
+
+@main_bp.route("/delete_company/<int:company_id>", methods=["GET"])
+def delete_company(company_id):
+    company = Company.query.get_or_404(company_id)
+    db.session.delete(company)
+    db.session.commit()
+    return redirect(url_for('main.companies'))
