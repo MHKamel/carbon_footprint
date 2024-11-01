@@ -29,13 +29,19 @@ def index():
         db.session.add(new_company)
         db.session.commit()
 
-        return redirect(url_for('main.companies'))
+        return redirect(url_for("main.companies", company_id=new_company.id))
 
     return render_template('index.html', form=form)
 
 
-@main_bp.route('/companies/')
-def companies():
-    # Load companies from the database
-    companies_list = Company.query.all()
-    return render_template('companies.html', companies_list=companies_list)
+@main_bp.route("/companies", defaults={'company_id': None})
+@main_bp.route("/companies/<int:company_id>")
+def companies(company_id):
+    if company_id:
+        # Display a single company's details
+        company = Company.query.get_or_404(company_id)
+        return render_template("company_detail.html", company=company)
+    else:
+        # Display a list of all companies
+        companies_list = Company.query.all()
+        return render_template("companies.html", companies_list=companies_list)

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Company Details{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Company Details for {{ company.title }}</h1>
+    <ul class="list-group">
+        <li class="list-group-item"><strong>Electricity:</strong> {{ company.electricity }}</li>
+        <li class="list-group-item"><strong>Natural Gas:</strong> {{ company.natural_gas }}</li>
+        <li class="list-group-item"><strong>Fuel:</strong> {{ company.fuel }}</li>
+        <li class="list-group-item"><strong>Waste:</strong> {{ company.waste }}</li>
+        <li class="list-group-item"><strong>Recycled Percent:</strong> {{ company.recycled_percent }}</li>
+        <li class="list-group-item"><strong>Business Travels:</strong> {{ company.business_travels }}</li>
+        <li class="list-group-item"><strong>Fuel Efficiency:</strong> {{ company.fuel_efficiency }}</li>
+        <li class="list-group-item"><strong>Energy Usage:</strong> {{ "%.3f" | format(company.energy_usage) }}</li>
+        <li class="list-group-item"><strong>Waste Generation:</strong> {{ "%.3f" | format(company.waste_generation) }}</li>
+        <li class="list-group-item"><strong>Business Travel Emissions:</strong> {{ "%.3f" | format(company.business_travel) }}</li>
+        <li class="list-group-item"><strong>Total Carbon Footprint:</strong> {{ "%.3f" | format(company.total) }}</li>
+    </ul>
+    <a href="{{ url_for('main.companies') }}" class="btn btn-primary mt-3">Back to Companies List</a>
+</div>
+{% endblock %}
