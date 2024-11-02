@@ -44,7 +44,25 @@ def companies(company_id):
     else:
         # Display a list of all companies
         companies_list = Company.query.all()
-        return render_template("companies.html", companies_list=companies_list)
+
+        # Prepare data for the chart
+        chart_data = {
+            'titles': [],
+            'energy_usage': [],
+            'waste_generation': [],
+            'business_travel': [],
+            'total': []
+        }
+
+        for company in companies_list:
+            chart_data['titles'].append(company.title)
+            chart_data['energy_usage'].append(company.energy_usage)
+            chart_data['waste_generation'].append(company.waste_generation)
+            chart_data['business_travel'].append(company.business_travel)
+            chart_data['total'].append(company.total)
+
+        return render_template("companies.html", companies_list=companies_list, chart_data=chart_data)
+
 
 @main_bp.route("/delete_company/<int:company_id>", methods=["GET"])
 def delete_company(company_id):
