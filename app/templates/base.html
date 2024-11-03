@@ -14,21 +14,30 @@
         }
         header {
             font-size: 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        header img {
+            height: 100px;
+            margin-right: 10px;
         }
         footer {
             font-size: 0.875rem;
         }
         h1 {
             font-size: 1.5rem;
+            margin: 0;
         }
-        #carbonFootprintChart {
+         {
             max-width: 200px;
             max-height: 200px;
         }
     </style>
 </head>
 <body>
-    <header class="bg-primary text-white text-center p-3">
+    <header class="bg-info text-white text-center p-3">
+        <img src="{{ url_for('static', filename='cfp.png') }}"  alt="Logo">
         <h1>Carbon Footprint</h1>
     </header>
 
