@@ -13,43 +13,43 @@ def seed_data():
         companies = [
             Company(
                 title='Company A',
-                electricity=800,          # kWh
-                natural_gas=120,         # Therms
-                fuel=200,                # Gallons of fuel
-                waste=1500,              # Pounds of waste
-                recycled_percent=0.3,      # 30% recycled
-                business_travels=1000,     # 10 trips
-                fuel_efficiency=0.25       # 25 mpg
+                electricity=800,
+                natural_gas=120,
+                fuel=200,
+                waste=1500,
+                recycled_percent=0.3,
+                business_travels=1000,
+                fuel_efficiency=0.25
             ),
             Company(
                 title='Company B',
-                electricity=500,          # kWh
-                natural_gas=80,          # Therms
-                fuel=100,                # Gallons of fuel
-                waste=800,               # Pounds of waste
-                recycled_percent=0.20,      # 20% recycled
-                business_travels=500,      # 5 trips
-                fuel_efficiency=0.30       # 30 mpg
+                electricity=500,
+                natural_gas=80,
+                fuel=100,
+                waste=800,
+                recycled_percent=0.20,
+                business_travels=500,
+                fuel_efficiency=0.30
             ),
             Company(
                 title='Company C',
-                electricity=1200,         # kWh
-                natural_gas=150,         # Therms
-                fuel=300,                # Gallons of fuel
-                waste=2000,              # Pounds of waste
-                recycled_percent=0.40,      # 40% recycled
-                business_travels=1500,     # 15 trips
-                fuel_efficiency=0.20       # 20 mpg
+                electricity=1200,
+                natural_gas=150,
+                fuel=300,
+                waste=2000,
+                recycled_percent=0.40,
+                business_travels=1500,
+                fuel_efficiency=0.20
             ),
             Company(
                 title='Company D',
-                electricity=600,          # kWh
-                natural_gas=60,          # Therms
-                fuel=50,                 # Gallons of fuel
-                waste=1000,              # Pounds of waste
-                recycled_percent=0.50,      # 50% recycled
-                business_travels=3000,      # 3 trips
-                fuel_efficiency=0.35       # 35 mpg
+                electricity=600,
+                natural_gas=60,
+                fuel=50,
+                waste=1000,
+                recycled_percent=0.50,
+                business_travels=3000,
+                fuel_efficiency=0.35
             )
         ]
 
