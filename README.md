@@ -123,6 +123,3 @@ jobs:
 - GitHub Actions for Python: https://docs.github.com/en/actions
 
 ---
-
-## ✨ Demo (Optional)
-> You can add your live Render app link here once deployed
